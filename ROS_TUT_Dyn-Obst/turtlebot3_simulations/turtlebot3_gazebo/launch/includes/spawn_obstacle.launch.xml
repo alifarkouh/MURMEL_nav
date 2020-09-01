@@ -1,0 +1,18 @@
+<launch>
+  <arg name="ns" default="obstacle" />
+  <arg name="name" default="obstacle" />
+  <arg name="x" default="0" />
+  <arg name="y" default="0" />
+  <arg name="vel_lin" default="0.2" />
+  <arg name="vel_ang" default="0.5" />
+
+  <group ns="$(arg ns)">
+    <param name="tf_prefix" value="$(arg ns)" />
+    
+    <param name="obstacle_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/obstacle_with_cmd_vel.urdf.xacro" />
+
+    <node pkg="gazebo_ros" type="spawn_model" name="$(anon spawn_obs)"  args="-urdf -model $(arg name) -x $(arg x) -y $(arg y) -param obstacle_description" />
+
+    <node pkg="rostopic" type="rostopic" name="$(anon cmd_vel_publisher)"  args="pub /$(arg ns)/cmd_vel geometry_msgs/Twist '{linear: {x: $(arg vel_lin), y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: $(arg vel_ang)}}'" />
+  </group>
+</launch>
