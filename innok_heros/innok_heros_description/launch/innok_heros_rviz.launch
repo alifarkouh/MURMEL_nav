@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="wheels" default="3"/>	<!-- "3" or "4" -->
+  <arg name="wheels" default="4"/>	<!-- "3" or "4" -->
   <arg name="tyre_type" default=""/>	<!-- "default" or "tractor" -->
 
   <!-- Send the Innok Heros URDF/XACRO to param server -->

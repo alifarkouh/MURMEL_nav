@@ -53,7 +53,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <gazebo reference="laser_link">
     <sensor type="ray" name="sick_lms100_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>25</update_rate>
       <ray>
         <scan>
