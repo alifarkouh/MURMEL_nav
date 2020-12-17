@@ -27,6 +27,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <!-- xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_basefootprint.xacro" /-->
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_base_link.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/sick_lms1xx.urdf.xacro"/>
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/imu.urdf.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_drive.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_battery.xacro"/>
@@ -39,7 +40,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	topic="scan" 
 	joint="lms_joint" 
 	frame="laser">
-  <origin xyz="5 0 -0.04" rpy="3.14 0 0"/>
+  <origin xyz="1.02 0 -0.04" rpy="3.14 0 0"/>
   </xacro:sick_lms1xx>
 
   <xacro:sick_lms1xx
@@ -47,8 +48,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	topic="scan_back" 
 	joint="lms_joint_back" 
 	frame="laser_back">
-  <origin xyz="-5.08 0 -0.04" rpy="3.14 0 3.14"/>
+  <origin xyz="-0.06 0 -0.04" rpy="3.14 0 3.14"/>
   </xacro:sick_lms1xx>
+
+  <!-- imu /-->
+  <xacro:imu_sensor 
+        parent="beam_link">
+  <origin xyz="0.08 0 0.041" rpy="0 0 0"/>
+  </xacro:imu_sensor>
 
   <!--heros_basefootprint                                             /-->
   <heros_base_link                                                />
