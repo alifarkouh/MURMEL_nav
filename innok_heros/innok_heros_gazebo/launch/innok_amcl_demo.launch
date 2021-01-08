@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
 <launch>
+<<<<<<< HEAD
  
   <arg name="set_init_pose" default="true" />
+=======
+  <!-- Map server -->
+  <!--arg name="map_file" default="$(find innok_heros_gazebo)/maps/test_map_021.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /-->
+
+  <!-- Place map frame at odometry frame -->
+  <!--node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/-->
+>>>>>>> 2a7e1622281006af05c076bb35e4abffa0318672
 
   <!-- Localization -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
@@ -55,7 +65,7 @@
   </node>
 
   <!-- rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/>
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/-->
 </launch>
 
 
