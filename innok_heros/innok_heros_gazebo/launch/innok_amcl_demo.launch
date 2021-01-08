@@ -1,12 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-  <!-- Map server -->
-  <arg name="map_file" default="$(find innok_heros_gazebo)/maps/test_map_021.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-
-  <!-- Place map frame at odometry frame -->
-  <!--node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
-      args="0 0 0 0 0 0 map odom 100"/-->
+ 
+  <arg name="set_init_pose" default="true" />
 
   <!-- Localization -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
@@ -39,6 +34,9 @@
     <param name="odom_alpha4"               value="0.1"/>
     <param name="odom_frame_id"             value="odom"/>
     <param name="base_frame_id"             value="base_footprint"/>
+    <param name="initial_pose_x"            value="1.214" if="$(arg set_init_pose)"/>
+    <param name="initial_pose_y"            value="2.806" if="$(arg set_init_pose)"/>
+    <param name="initial_pose_a"            value="-2.041" if="$(arg set_init_pose)"/>
   </node>
 
   <!-- Move base -->
