@@ -242,7 +242,7 @@ void publishOdomMsg()
     odom_trans.transform.rotation = odom_quaternion;
     
     ros_mutex.lock();
-    tf_br.sendTransform(odom_trans);
+    //tf_br.sendTransform(odom_trans);
     ros_mutex.unlock();
 
 }
