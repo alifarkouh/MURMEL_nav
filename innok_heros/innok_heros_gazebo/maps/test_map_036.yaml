@@ -1,4 +1,4 @@
-image: /home/alifarkouh/catkin_ws/src/innok_heros/innok_heros_gazebo/maps/test_map_021.pgm
+image: /home/alifarkouh/catkin_ws/src/innok_heros/innok_heros_gazebo/maps/test_map_036.pgm
 resolution: 0.050000
 origin: [-50.000000, -50.000000, 0.000000]
 negate: 0

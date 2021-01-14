@@ -36,26 +36,9 @@
     <param name="base_frame_id"             value="base_footprint"/>
     <param name="initial_pose_x"            value="1.214" if="$(arg set_init_pose)"/>
     <param name="initial_pose_y"            value="2.806" if="$(arg set_init_pose)"/>
-    <param name="initial_pose_a"            value="-2.041" if="$(arg set_init_pose)"/>
+    <param name="initial_pose_a"            value="-2.041" /> <!-- if="$(arg set_init_pose)" -->>
   </node>
 
-  <!-- Move base -->
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find innok_heros_gazebo)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find innok_heros_gazebo)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find innok_heros_gazebo)/config/base_local_planner_params.yaml" command="load" />
-    
-    <remap from="cmd_vel" to="cmd_vel"/>
-    <remap from="odom" to="odometry/filtered"/> <!-- odometry/filtered -->
-    <remap from="scan" to="scan_filtered"/>
-    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="0.01"/>
-    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="0.01"/>
-  </node>
-
-  <!-- rviz -->
-  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/-->
 </launch>
 
 

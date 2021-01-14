@@ -3,7 +3,7 @@
 
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
       <remap from="scan" to="scan_filtered"/>
-      <remap from="odom" to="odometry/filtered"/> <!-- odometry/filtered -->
+      <remap from="odom" to="odom"/> <!-- odometry/filtered -->
       <param name="map_update_interval" value="5.0"/>
       <param name="maxUrange" value="16.0"/>
       <param name="sigma" value="0.05"/>
@@ -34,7 +34,7 @@
       <param name="lasamplestep" value="0.005"/>
     </node>
 
-    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/-->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/>
 
 </launch>
 
