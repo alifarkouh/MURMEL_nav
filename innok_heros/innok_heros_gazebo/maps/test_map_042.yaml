@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 image: /home/heros/catkin_ws/src/MURMEL_nav/innok_heros/innok_heros_gazebo/maps/test_map_042.pgm
+=======
+image: /home/alifarkouh/catkin_ws/src/innok_heros/innok_heros_gazebo/maps/test_map_042.pgm
+>>>>>>> 008a29f18d13d7b7116e364edcc664ebf0b0a5bc
 resolution: 0.050000
 origin: [-12.824999, -12.824999, 0.000000]
 negate: 0
