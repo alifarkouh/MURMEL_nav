@@ -26,5 +26,5 @@
   </node>
 
   <!-- Rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/amcl.rviz"/>
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/amcl.rviz" /-->
 </launch>

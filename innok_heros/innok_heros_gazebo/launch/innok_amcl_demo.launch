@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <launch>
  
-  <arg name="set_init_pose" default="true" />
+  <arg name="set_init_pose" default="false" />
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find innok_heros_gazebo)/maps/test_map_042.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- Localization -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
@@ -15,7 +19,7 @@
     <param name="recovery_alpha_slow"       value="0.00"/>
     <param name="recovery_alpha_fast"       value="0.00"/>
     <param name="gui_publish_rate"          value="50.0"/>
-    <remap from="scan"                      to="scan_filtered"/>
+    <remap from="scan"                      to="scan_multi"/>
     <remap from="odom"                      to="odometry/filtered"/> <!-- odometry/filtered -->
     <param name="laser_max_range"           value="3.5"/>
     <param name="laser_max_beams"           value="180"/>
@@ -36,7 +40,26 @@
     <param name="base_frame_id"             value="base_footprint"/>
     <param name="initial_pose_x"            value="1.214" if="$(arg set_init_pose)"/>
     <param name="initial_pose_y"            value="2.806" if="$(arg set_init_pose)"/>
-    <param name="initial_pose_a"            value="-2.041" /> <!-- if="$(arg set_init_pose)" -->>
+    <param name="initial_pose_a"            value="-2.041" if="$(arg set_init_pose)"/>
+  </node>
+
+    <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find innok_heros_gazebo)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find innok_heros_gazebo)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find innok_heros_gazebo)/config/base_local_planner_params.yaml" command="load" />
+
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odometry/filtered"/>
+    <remap from="scan" to="scan_filtered"/>
+
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+    <param name="use_dijkstra" value="true" />
+    <param name="controller_frequency" value="10.0" />
+    <param name="planner_frequency" value="5.0" />
   </node>
 
 </launch>

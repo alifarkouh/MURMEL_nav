@@ -225,10 +225,10 @@ void publishOdomMsg()
     publisherOdom.publish(odom_msg);
 
     //update last values
-    old_odom_orientation = odom_orientation;
-    old_odom_pos_x = odom_pos_x;
-    old_odom_pos_y = odom_pos_y;
-    old_tick = tick;
+    //old_odom_orientation = odom_orientation;
+    //old_odom_pos_x = odom_pos_x;
+    //old_odom_pos_y = odom_pos_y;
+    //old_tick = tick;
     
     // Also publish tf if necessary
     geometry_msgs::TransformStamped odom_trans;
