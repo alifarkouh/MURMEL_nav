@@ -4,7 +4,11 @@
   <arg name="set_init_pose" default="true" />
 
   <!-- Map server -->
+<<<<<<< HEAD:innok_heros/innok_heros_gazebo/launch/innok_amcl.launch
   <arg name="map_file" default="$(find innok_heros_gazebo)/maps/innok_map_gazebo.yaml"/>
+=======
+  <arg name="map_file" default="$(find innok_heros_navigation)/maps/test_map_042.yaml"/>
+>>>>>>> 9a0c3ba0d01524c6742be5c52351a615f1a4ef1d:innok_heros/innok_heros_gazebo/launch/innok_amcl_demo.launch
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- Localization -->
@@ -45,11 +49,11 @@
 
     <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find innok_heros_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find innok_heros_gazebo)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find innok_heros_gazebo)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find innok_heros_gazebo)/config/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find innok_heros_gazebo)/config/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find innok_heros_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find innok_heros_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find innok_heros_navigation)/config/base_local_planner_params.yaml" command="load" />
 
     <remap from="cmd_vel" to="cmd_vel"/>
     <remap from="odom" to="odom"/>

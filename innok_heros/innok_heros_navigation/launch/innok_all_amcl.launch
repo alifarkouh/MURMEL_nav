@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>   
+    <include file="$(find innok_heros_driver)/launch/heros_all.launch" />
+    <include file="$(find laser_filters)/launch/innok_AngularBoundsFilter.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_ekf_localization.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_amcl_demo.launch" />
+    <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" />
+</launch>
