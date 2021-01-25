@@ -70,28 +70,40 @@ void LaserscanMerger::reconfigureCallback(laserscan_multi_mergerConfig &config, 
 
 void LaserscanMerger::laserscan_topic_parser()
 {
-	// LaserScan topics to subscribe
+// LaserScan topics to subscribe
 	ros::master::V_TopicInfo topics;
 	ros::master::getTopics(topics);
 
     istringstream iss(laserscan_topics);
 	vector<string> tokens;
 	copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter<vector<string> >(tokens));
+
 	vector<string> tmp_input_topics;
-	for(int i=0;i<tokens.size();++i)
-	{
-        for(int j=0;j<topics.size();++j)
+	while(tokens.size() != tmp_input_topics.size())
+	{	
+		ros::master::getTopics(topics);
+		
+		for(int i=0;i<tokens.size();++i)
 		{
-			if( (tokens[i].compare(topics[j].name) == 0) && (topics[j].datatype.compare("sensor_msgs/LaserScan") == 0) )
+			for(int j=0;j<topics.size();++j)
 			{
-				tmp_input_topics.push_back(topics[j].name);
+				if( (tokens[i].compare(topics[j].name) == 0) && (topics[j].datatype.compare("sensor_msgs/LaserScan") == 0) )
+				{
+					tmp_input_topics.push_back(topics[j].name);
+				}
 			}
 		}
-	}
 
-	sort(tmp_input_topics.begin(),tmp_input_topics.end());
-	std::vector<string>::iterator last = std::unique(tmp_input_topics.begin(), tmp_input_topics.end());
-	tmp_input_topics.erase(last, tmp_input_topics.end());
+		sort(tmp_input_topics.begin(),tmp_input_topics.end());
+		std::vector<string>::iterator last = std::unique(tmp_input_topics.begin(), tmp_input_topics.end());
+		tmp_input_topics.erase(last, tmp_input_topics.end());
+		ROS_INFO_STREAM_THROTTLE(2.0, "Laserscan merger waiting for specified input topics. " <<  tmp_input_topics.size() << "/" << tokens.size() << " input topics found");
+		if(tokens.size() == tmp_input_topics.size()) //Do not sleep if all input topics are found
+		{
+			break; 
+		}
+		ros::Duration(1.0).sleep(); 		
+	}
 
 
 	// Do not re-subscribe if the topics are the same
