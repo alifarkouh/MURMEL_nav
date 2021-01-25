@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="false">
+    <rosparam command="load" file="$(find innok_heros_navigation)/config/innok_ekf_localization.yaml" />
+  </node>
+</launch>

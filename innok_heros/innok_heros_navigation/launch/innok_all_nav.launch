@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>   
+    <include file="$(find innok_heros_driver)/launch/heros_all.launch" />
+    <include file="$(find innok_heros_gazebo)/launch/innok_AngularBoundsFilter.launch" />
+    <include file="$(find innok_heros_gazebo)/launch/innok_amcl.launch" />
+    <include file="$(find innok_heros_gazebo)/launch/innok_laserscan_multi_merger.launch" />
+</launch>

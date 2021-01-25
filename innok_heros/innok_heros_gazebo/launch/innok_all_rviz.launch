@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch> 
+  <!-- Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/innok_all.rviz" />
+</launch>

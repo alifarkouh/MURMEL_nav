@@ -37,6 +37,6 @@
 
   <!-- Show in Rviz   -->
   <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/rviz_rb.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find innok_heros_gazebo)/rviz/innok_all.rviz"/>
   
 </launch>
