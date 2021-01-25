@@ -2,9 +2,5 @@
 
 <launch>   
     <include file="$(find innok_heros_driver)/launch/heros_all.launch" />
-<<<<<<< HEAD
-=======
-    <!--include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" /-->
->>>>>>> 9a0c3ba0d01524c6742be5c52351a615f1a4ef1d
     <include file="$(find innok_heros_gazebo)/launch/innok_hector.launch" />
 </launch>
