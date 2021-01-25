@@ -1,5 +1,5 @@
 ekf_localization: 
- frequency: 20
+ frequency: 30
 
 silent_tf_failure: false
 
