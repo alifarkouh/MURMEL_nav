@@ -9,7 +9,7 @@
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="5"/>
   <arg name="scan_topic" default="scan_filtered"/>
-  <arg name="map_size" default="512"/>
+  <arg name="map_size" default="2048"/>
 
   <!--node pkg="tf" type="static_transform_publisher" name="odom_base_link_broadcaster" args="0 0 0 0 0 0 odom base_link 100"/-->
 
@@ -24,7 +24,7 @@
     <param name="use_tf_scan_transformation" value="true"/>
     <param name="use_tf_pose_start_estimate" value="false"/>
     <param name="pub_map_odom_transform" value="$(arg pub_map_odom_transform)"/>
-    <remap from="odom" to="odometry/filtered"/>
+    <!--remap from="odom" to="odometry/filtered"/-->
     
     <!-- Map size / start point -->
     <param name="map_resolution" value="0.050"/>

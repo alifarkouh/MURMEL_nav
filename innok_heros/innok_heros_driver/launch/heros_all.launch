@@ -38,8 +38,8 @@
         <!-- Static Transform Publisher for IMU-->
         <!--node pkg="tf2_ros" type="static_transform_publisher" name="imu_link_broadcaster" args="-0.5 0.0 0.7 0.0 0.0 0.0 base_link imu_link" /-->
 
-	<!--node name="nmea_socket_client_driver" pkg="nmea_navsat_driver" type="nmea_socket_client_driver" respawn="true">
+	<node name="nmea_socket_client_driver" pkg="nmea_navsat_driver" type="nmea_socket_client_driver" respawn="true">
 		<param name="ip" value="192.168.0.3"/>
 		<param name="port" value="28002"/>
-	</node-->
+	</node>
 </launch>
