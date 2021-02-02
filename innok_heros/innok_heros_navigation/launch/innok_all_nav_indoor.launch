@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>   
+    <include file="$(find innok_heros_driver)/launch/heros_all.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_AngularBoundsFilter.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_amcl_indoor.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_ekf_localization.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_laserscan_multi_merger.launch" />
+</launch>

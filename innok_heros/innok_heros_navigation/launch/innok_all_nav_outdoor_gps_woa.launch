@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>   
+    <include file="$(find innok_heros_driver)/launch/heros_all.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_AngularBoundsFilter.launch" />
+    <include file="$(find innok_heros_navigation)/launch/innok_ekf_localization_gps_woa.launch" />
+</launch>

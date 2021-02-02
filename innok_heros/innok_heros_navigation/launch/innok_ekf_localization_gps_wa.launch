@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="false">
+    <rosparam command="load" file="$(find innok_heros_navigation)/config/innok_ekf_localization_odom_gps_wa.yaml" />
+    <remap from="odometry/filtered" to="odometry/filtered_odom"/>
+  </node>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="false">
+    <rosparam command="load" file="$(find innok_heros_navigation)/config/innok_ekf_localization_map_gps_wa.yaml" />
+    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node>
+
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true" output="screen">
+      <remap from="odometry/filtered" to="odometry/filtered_map"/>
+      <remap from="gps/fix" to="fix"/>
+  </node>
+
+</launch>
