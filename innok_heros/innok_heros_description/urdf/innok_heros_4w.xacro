@@ -28,6 +28,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_base_link.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/sick_lms1xx.urdf.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/imu.urdf.xacro"/>
+  <xacro:include filename="$(find innok_heros_description)/urdf/modules/_d435.urdf.xacro" />
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_wheel.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_drive.xacro"/>
   <xacro:include filename="$(find innok_heros_description)/urdf/modules/heros_battery.xacro"/>
@@ -56,6 +57,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         parent="base_link">
   <origin xyz="0.175 0 0.041" rpy="0 0 0"/>
   </xacro:imu_sensor>
+
+    <!-- Camera /-->
+  <xacro:sensor_d435 
+	      name="camera" 
+      	topics_ns="camera" 
+      	parent="base_link" 
+      	publish_pointcloud="true">
+  <origin xyz="1 0 0.08" rpy="0 0 0"/>
+  </xacro:sensor_d435>
 
   <!--heros_basefootprint                                             /-->
   <heros_base_link                                                />
